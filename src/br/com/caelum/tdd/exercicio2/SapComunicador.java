@@ -7,4 +7,10 @@ public class SapComunicador implements Sap {
 		
 	}
 
+	@Override
+	public void notifica(NotaFiscal notaFiscal) {
+		envia(notaFiscal);
+		
+	}
+
 }

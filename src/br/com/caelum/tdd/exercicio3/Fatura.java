@@ -8,13 +8,11 @@ public class Fatura {
 	private String cliente;
 	private double valor;
 	private List<Pagamento> pagamentos;
-	private boolean pago;
-	
+
 	public Fatura(String cliente, double valor) {
 		this.cliente = cliente;
 		this.valor = valor;
 		this.pagamentos = new ArrayList<Pagamento>();
-		this.pago = false;
 	}
 
 	public String getCliente() {
@@ -30,11 +28,18 @@ public class Fatura {
 	}
 
 	public boolean isPago() {
-		return pago;
+		
+		double totalPagamentos = 0;
+		
+		for (Pagamento pagamento : pagamentos) {
+			totalPagamentos += pagamento.getValor();
+		}
+		return totalPagamentos >= valor;
 	}
 
-	public void setPago(boolean pago) {
-		this.pago = pago;
+	public void adicionaPagamento(Pagamento pagamento) {
+		pagamentos.add(pagamento);
+		
 	}
 	
 	

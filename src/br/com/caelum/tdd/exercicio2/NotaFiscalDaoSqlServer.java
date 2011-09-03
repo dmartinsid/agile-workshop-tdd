@@ -6,4 +6,11 @@ public class NotaFiscalDaoSqlServer implements NotaFiscalDao {
 		System.out.println("salva nf no banco");
 	}
 
+	@Override
+	public void notifica(NotaFiscal notaFiscal) {
+		persiste(notaFiscal);
+
+		
+	}
+
 }

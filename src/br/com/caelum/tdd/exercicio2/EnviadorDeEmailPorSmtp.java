@@ -6,4 +6,11 @@ public class EnviadorDeEmailPorSmtp implements EnviadorDeEmail {
 		System.out.println("envia email da nf " + nf.getId());
 	}
 
+	@Override
+	public void notifica(NotaFiscal notaFiscal) {
+		enviaEmail(notaFiscal);
+		
+		
+	}
+
 }

@@ -3,6 +3,8 @@ package br.com.caelum.tdd.exercicio1;
 import static br.com.caelum.tdd.exercicio1.Cargo.DBA;
 import static br.com.caelum.tdd.exercicio1.Cargo.DESENVOLVEDOR;
 import static br.com.caelum.tdd.exercicio1.Cargo.TESTADOR;
+import static br.com.caelum.tdd.exercicio1.Cargo.GERENTE_DE_PROJETOS;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,6 +16,7 @@ import br.com.caelum.tdd.exercicio1.Cargo;
 import br.com.caelum.tdd.exercicio1.CalculadoraDeSalario;
 
 public class CalculadoraDeSalarioTests {
+
 
 	private CalculadoraDeSalario calculadora;
 
@@ -75,6 +78,28 @@ public class CalculadoraDeSalarioTests {
 		double salario = calculadora.calcula(testador);
 		
 		assertEquals(1000.0 * 0.85, salario, 0.000001);
+	}
+	
+	@Test
+	public void deveRetornar5000MenosImpostosDe20PorCentoSeGerenteDeProjetosGanhaMaisIgualA5000()
+	{
+		Funcionario gerenteDeProjetos = umFuncionario(GERENTE_DE_PROJETOS, 5000.0);
+		
+		double salario = calculadora.calcula(gerenteDeProjetos);
+		
+		assertEquals(5000.0 * 0.8, salario, 0.0000001);
+		
+	}
+	@Test
+	public void deveRetornar4000MenosImpostosDe15PorCentoSeGerenteDeProjetosGanhaMenosDe5000()
+	{
+		Funcionario gerenteDeProjetos = umFuncionario(GERENTE_DE_PROJETOS, 4000.0);
+		
+		double salario = calculadora.calcula(gerenteDeProjetos);
+		
+		assertEquals(4000.0 * 0.85, salario, 0.0000001);
+		 
+		
 	}
 	
 		
